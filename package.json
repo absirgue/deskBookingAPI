@@ -1,0 +1,11 @@
+{
+  "name": "newwork_api",
+  "version": "1.0.0",
+  "description": "api rest pour new work",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
