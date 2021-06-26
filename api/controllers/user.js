@@ -69,7 +69,7 @@ exports.user_signup = (req, res, next) => {
             message: "Mail exists"
           });
         } else {
-        Company.find({name:req.body.company}).exec()
+        Company.find({_id:req.body.company}).exec()
         .then(company=>{
           bcrypt.compare(req.body.company_code,company[0].company_code,(err,result)=>{
             if (err){

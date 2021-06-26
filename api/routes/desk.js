@@ -5,7 +5,7 @@ const checkAuth = require('../middleware/check-auth')
 
 const DeskControllers = require('../controllers/desk');
 
-router.get('/find_desk',checkAuth,DeskControllers.find_desk);
+router.post('/find_desk',checkAuth,DeskControllers.find_desk);
 
 router.post('/:deskId/book_desk',checkAuth,DeskControllers.book_desk);
 
