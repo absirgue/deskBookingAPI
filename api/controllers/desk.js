@@ -27,7 +27,7 @@ exports.find_desk=(req, res, next) =>{
             var checking_done = 0
             for (i = 0; i < desks.length; i++){
                 if (desks[i].f_preference == req.body.f_preference && desks[i].s_preference == req.body.s_preference){
-                    res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address})
+                    res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address,f_preference:desks[i].f_preference,s_preference:desks[i].s_preference})
                     checking_done = 1
                     
                 }
@@ -36,7 +36,7 @@ exports.find_desk=(req, res, next) =>{
             if (checking_done == 0){
                 for (i = 0; i < desks.length; i++){
                     if (desks[i].f_preference == req.body.f_preference || desks[i].s_preference == req.body.s_preference){
-                        res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address})
+                        res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address,f_preference:desks[i].f_preference,s_preference:desks[i].s_preference})
                         checking_done = 1
                         
                     }
@@ -44,7 +44,7 @@ exports.find_desk=(req, res, next) =>{
             }
             console.log("second check done")
             if (checking_done==0){
-                res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address})
+                res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address,f_preference:desks[i].f_preference,s_preference:desks[i].s_preference})
                 console.log("last check done")
             }
         })
@@ -62,7 +62,7 @@ exports.find_desk=(req, res, next) =>{
             var checking_done = 0
             for (i = 0; i < desks.length; i++){
                 if (desks[i].f_preference == req.body.f_preference && desks[i].s_preference == req.body.s_preference){
-                    res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address})
+                    res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address,f_preference:desks[i].f_preference,s_preference:desks[i].s_preference})
                     checking_done = 1
                     
                 }
@@ -71,7 +71,7 @@ exports.find_desk=(req, res, next) =>{
             if (checking_done == 0){
                 for (i = 0; i < desks.length; i++){
                     if (desks[i].f_preference == req.body.f_preference || desks[i].s_preference == req.body.s_preference){
-                        res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address})
+                        res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address,f_preference:desks[i].f_preference,s_preference:desks[i].s_preference})
                         checking_done = 1
                         
                     }
@@ -79,7 +79,7 @@ exports.find_desk=(req, res, next) =>{
             }
             console.log("second check done")
             if (checking_done==0){
-                res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address})
+                res.status(200).json({id:desks[i]._id,locator:desks[i].locator,address:desks[i].address,f_preference:desks[i].f_preference,s_preference:desks[i].s_preference})
                 console.log("last check done")
             }
         })
