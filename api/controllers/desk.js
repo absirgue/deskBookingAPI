@@ -1,3 +1,14 @@
+/**
+ * All functions for desk related requests
+ * Desk related requests are:
+ * Finding a desk
+ * Booking a desk
+ * Creating a desk (for company to setup their office environment)
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -6,6 +17,7 @@ const Desk = require("../models/desk");
 const Company = require("../models/company");
 const Booking = require("../models/booking")
 
+// GET - Find a desk available of user's company available at required date and with the most preferences possible
 exports.find_desk=(req, res, next) =>{
   Company.find({"_id":req.body.company}).exec()
   .then(comp=>{
@@ -90,8 +102,8 @@ exports.find_desk=(req, res, next) =>{
 
 }
 
-
-exports.book_desk=(req, res, next) =>{ //deskId
+// POST - Updates the dates_occupied list when the desk is booked
+exports.book_desk=(req, res, next) =>{
     Desk.findById(req.params.deskId).exec()
     .then(desk=>{
             Desk.updateOne({_id:req.params.deskId},{ $push: {dates_occupied:req.body.date} }).exec().then(()=>res.status(200).json({message:'DONE yes '})).catch(err=>{res.status(400).json({error:err})})
@@ -99,7 +111,7 @@ exports.book_desk=(req, res, next) =>{ //deskId
     })
 }
 
-
+// GET - Allowing companies to add a desk to their list of desks
 exports.create_desk=(req, res, next) =>{
     Desk.find({ locator: req.body.locator })
     .exec()

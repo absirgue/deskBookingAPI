@@ -1,7 +1,14 @@
+/**
+ * Model of elements of User Collection in our Database
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
+
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId, //you define each parameter by the name and then the data type
+    _id: mongoose.Types.ObjectId, 
     first_name: {type:String, required:true},
     last_name: {type:String, required:true},
     email: { 
@@ -9,7 +16,7 @@ const userSchema = mongoose.Schema({
         required: true, 
         unique: true, 
         match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-    },
+    },//previous line allows, via match, to check if input is a valid email address in order to reject signup if it is not
     password:{type:String, required:true},
     team:{type:String,required:false},
     company:{type:String,required:true},

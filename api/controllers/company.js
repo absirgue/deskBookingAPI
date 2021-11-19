@@ -1,3 +1,13 @@
+/**
+ * All functions for company related requests
+ * Company related requests are:
+ * Creating a Company
+ * Getting info about a Company
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -5,7 +15,7 @@ const jwt = require("jsonwebtoken");
 
 const Company = require("../models/company");
 
-
+//POST - creates a company with a company code given when company user registers with us
 exports.create_company = (req, res, next) => {
     Company.find({ name: req.body.name })
       .exec()
@@ -55,6 +65,7 @@ exports.create_company = (req, res, next) => {
       });
   };
 
+//GET - get infos about a specific company
 exports.get_info = (req,res,next)=>{
     Company.findById(req.params.companyId).select("name _id teams total_nb_employees nb_of_desks max_desk_occupancy address_of_offices max_desk_occupancy amount_per_month options preferences").exec()
     .then(company => {res.status(200).json({company_info:company})})

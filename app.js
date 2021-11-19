@@ -1,19 +1,25 @@
+/**
+ * Core of our program, connects to database, explains how to handle requests, redirects them to Routes file
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
 
 const express = require('express');
 const app = express();
-const morgan = require('morgan');// morgan is sused for logging purposese
-const bodyParser = require('body-parser')//to parse the requests (beacuase they ar enot eautiful in node and this makes it easier)
+const morgan = require('morgan');// morgan is used for logging purposese
+const bodyParser = require('body-parser')//to parse requests 
 const mongoose = require('mongoose');
 const helmet = require('helmet')
 
-
+//import our Routes files, to redirect requests to them for request-specific treatment
 const deskRoutes = require('./api/routes/desk')
 const userRoutes = require('./api/routes/user');
 const companyRoutes = require('./api/routes/company');
 const bookingRoutes = require('./api/routes/booking');
 
 app.use(helmet());
-const mdp = "lavieestbelle12250"
+const mdp = //password not given, this code will not work without it it is on purpose as DB should not be accessed
 
 mongoose
      .connect( "mongodb+srv://test_cluster:" +
@@ -22,10 +28,10 @@ mongoose
      .then(() => console.log( 'Database Connected' ))
      .catch(err => console.log( err ));
 
- //to connect to databse --> mongoose.connect(pathFromMongoDB,) the useMongoClient:true is recommended when using mongoose
+ //to connect to databse 
 
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended:true}));//this says that we want to parse URLs and that extended (stuff with rich data) is not expected/we don't want to parse it
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json()) //used to parse json
 
 
@@ -42,8 +48,9 @@ app.use((req, res, next) => {
     }
     next();
   });
-//routes that should handel requests
-app.use('/desk',deskRoutes,()=>{console.log("desk")}); // middleware/ products is a filter
+
+//routes that should handle requests
+app.use('/desk',deskRoutes); 
 app.use('/company',companyRoutes);
 app.use('/user',userRoutes);
 app.use('/booking',bookingRoutes);
@@ -55,8 +62,8 @@ app.use((req,res,next)=>{  //catch errors
     next(error);
 });
 
-app.use((error,req,res,next)=>{ //treats all the error of the thingy
-    res.status(error.status || 500); //retourne le status de l'errruer ou alors 500
+app.use((error,req,res,next)=>{ //treats all the error
+    res.status(error.status || 500); //returns error status or a default 500 status
     res.json({
         error:{
             message:error.message

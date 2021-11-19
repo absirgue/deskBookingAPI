@@ -1,8 +1,15 @@
+/**
+ * Model of elements of Booking Collection in our Database
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const bookingSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId, //you define each parameter by the name and then the data type
+    _id: mongoose.Types.ObjectId, 
     desk:{type:Schema.Types.ObjectId,ref:'Desk',required:true},
     user:{type:Schema.Types.ObjectId,ref:'User',required:true},
     date:{type:Date,required:true},

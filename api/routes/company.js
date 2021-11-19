@@ -1,3 +1,10 @@
+/**
+ * Routes of Company request, linked to function of '../controllers/company.js'
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
+
 const express = require("express");
 const router = express.Router();
 

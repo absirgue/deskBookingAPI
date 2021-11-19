@@ -1,7 +1,14 @@
+/**
+ * Model of elements of Desk Collection in our Database
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
+
 const mongoose = require('mongoose');
 
 const deskSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId, //you define each parameter by the name and then the data type
+    _id: mongoose.Types.ObjectId, 
     locator:{type:String, required:true},
     f_preference: {type:Boolean, required:true},
     s_preference:{type:Boolean, required:true},

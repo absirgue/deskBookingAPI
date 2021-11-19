@@ -1,7 +1,14 @@
+/**
+ * Model of elements of Company Collection in our Database
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
+
 const mongoose = require('mongoose');
 
 const companySchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId, //you define each parameter by the name and then the data type
+    _id: mongoose.Types.ObjectId, 
     name:{type:String, required:true},
     teams:[{type:String}],
     total_nb_employees: {type:Number},

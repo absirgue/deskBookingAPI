@@ -1,3 +1,10 @@
+
+/**
+ * Run when starting the program, creates a webserver for our requests to be made to API
+ * 
+ * Author: asirgue
+ * Version: 4.0
+ */
 const http = require('http');
 const app = require('./app.js')
 
